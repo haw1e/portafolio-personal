@@ -16,79 +16,214 @@
         <div class="icon-container">
             <div class="desktop-icon" onclick="openWindow('window-sobre-mi')">
                 <img src="images/persona.png" alt="Sobre mí">
-                <span>Sobre mí</span>
+                <span data-i18n-key="icon_about">Sobre mí</span>
             </div>
 
             <div class="desktop-icon" onclick="openWindow('window-proyectos')">
                 <img src="images/folder.png" alt="Carpeta">
-                <span>Mis Proyectos</span>
+                <span data-i18n-key="icon_projects">Mis Proyectos</span>
             </div>
 
             <div class="desktop-icon" onclick="openWindow('window-contacto')">
                 <img src="images/phone.png" alt="Correo">
-                <span>Contacto</span>
+                <span data-i18n-key="icon_contact">Contacto</span>
+            </div>
+
+            <div class="desktop-icon" onclick="openWindow('window-translate')">
+                <img src="images/tree-computer.svg" alt="Translate">
+                <span>Translate.exe</span>
             </div>
         </div>
 
         <!-- Window: Sobre mí -->
         <div class="window" id="window-sobre-mi">
             <div class="title-bar">
-                <div class="title-bar-text">Sobre mí</div>
+                <div class="title-bar-text" data-i18n-key="title_about">Sobre mí</div>
                 <div class="title-bar-controls">
                     <button aria-label="Close" onclick="closeWindow('window-sobre-mi')">×</button>
                 </div>
             </div>
             <div class="window-body">
                 <p><strong>Justin Serón</strong></p>
-                <p>Soy estudiante de Ingeniería en Informática de séptimo semestre. Me destaco como desarrollador de software con interés 
-                particular en la ciberseguridad, cuento con certificaciones tales como Cybersecurity Awareness Professional Certification (CAPC),
-                también me destaco en el desarrollo de aplicaciones y sitios web.</p>
+                <p>
+                    <span data-i18n-key="about_p1_start">Soy estudiante de Ingeniería en Informática de séptimo semestre. Me destaco como desarrollador de software con interés 
+                    particular en la ciberseguridad, cuento con certificaciones tales como</span> Cybersecurity Awareness Professional Certification (CAPC)<span data-i18n-key="about_p1_end">,
+                    también me destaco en el desarrollo de aplicaciones y sitios web.</span>
+                </p>
                 <fieldset>
-                    <legend>Stack Tecnológico</legend>
-                    <p>Angular, Ionic, Next.js, React, Flutter, Firebase, Supabase y demás.</p>
+                    <legend data-i18n-key="stack_legend">Stack Tecnológico</legend>
+                    <p>Angular, Ionic, Next.js, React, Flutter, Firebase, Supabase <span data-i18n-key="stack_and_more">y demás</span>.</p>
                 </fieldset>
             </div>
         </div>
 
-        <!-- Window: Mis Proyectos -->
-        <div class="window" id="window-proyectos">
+        <!-- Window: Mis Proyectos (Carpeta) -->
+        <div class="window" id="window-proyectos" style="width: 600px;">
             <div class="title-bar">
-                <div class="title-bar-text">Mis Proyectos</div>
+                <div class="title-bar-text" data-i18n-key="title_projects">Mis Proyectos</div>
                 <div class="title-bar-controls">
                     <button aria-label="Close" onclick="closeWindow('window-proyectos')">×</button>
                 </div>
             </div>
-            <div class="window-body">
-                <ul>
-                    <li>
-                        <strong>MoveGo</strong><br>
-                        Sistema de movilización y gestión de rutas enfocada en los estudiantes de DuocUC.
-                    </li>
-                    <li>
-                        <strong>SpinZone</strong><br>
-                        Sitio E-Commerce completo especializado en la venta de productos de tenis de mesa.
-                    </li>
-                    <li>
-                        <strong>AsistenciApp</strong><br>
-                        Aplicación centrada en el manejo de asistencia para las empresas, con funcionalidades de ingreso y salida a través de QR.
-                    </li>
-                </ul>
+            <div class="menu-bar">
+                <span data-i18n-key="menu_file"><u>F</u>ile</span>
+                <span data-i18n-key="menu_edit"><u>E</u>dit</span>
+                <span data-i18n-key="menu_view"><u>V</u>iew</span>
+                <span data-i18n-key="menu_help"><u>H</u>elp</span>
+            </div>
+            <div class="explorer-body">
+                <div class="explorer-left-panel">
+                    <div class="panel-header" data-i18n-key="panel_all_folders">All Folders</div>
+                    <div class="panel-content tree-view">
+                        <ul>
+                            <li>
+                                <div class="tree-item">
+                                    <img src="images/tree-desktop.svg" alt=""> <span class="tree-item-text" data-i18n-key="tree_desktop">Escritorio</span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="tree-item">
+                                            <img src="images/tree-computer.svg" alt=""> <span class="tree-item-text" data-i18n-key="tree_mypc">Mi PC</span>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <div class="tree-item">
+                                                    <img src="images/tree-drive.svg" alt=""> <span class="tree-item-text">C:</span>
+                                                </div>
+                                                <ul>
+                                                    <li class="selected">
+                                                        <div class="tree-item">
+                                                            <img src="images/folder.png" alt=""> <span class="tree-item-text" data-i18n-key="tree_projects">Mis Proyectos</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="explorer-divider"></div>
+                <div class="explorer-right-panel">
+                    <div class="panel-header" data-i18n-key="panel_contents">Contents of 'Mis Proyectos'</div>
+                    <div class="panel-content folder-view">
+                        <div class="folder-icon" onclick="openWindow('window-movego')">
+                            <img src="images/notepad.svg" alt="MoveGo.txt">
+                            <span>MoveGo.txt</span>
+                        </div>
+                        <div class="folder-icon" onclick="openWindow('window-spinzone')">
+                            <img src="images/notepad.svg" alt="SpinZone.txt">
+                            <span>SpinZone.txt</span>
+                        </div>
+                        <div class="folder-icon" onclick="openWindow('window-asistenciapp')">
+                            <img src="images/notepad.svg" alt="AsistenciApp.txt">
+                            <span>AsistenciApp.txt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="status-bar">
+                <div class="status-left" data-i18n-key="status_objs">3 object(s)</div>
+                <div class="status-right" data-i18n-key="status_space">969KB (Disk free space: 40.8MB)</div>
+            </div>
+        </div>
+
+        <!-- Archivo: MoveGo.txt -->
+        <div class="window" id="window-movego">
+            <div class="title-bar">
+                <div class="title-bar-text" data-i18n-key="title_movego">MoveGo.txt - Bloc de notas</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('window-movego')">×</button>
+                </div>
+            </div>
+            <div class="window-body notepad-body">
+                <p><strong>MoveGo</strong></p>
+                <p data-i18n-key="movego_desc">Sistema de movilización y gestión de rutas enfocada en los estudiantes de DuocUC.</p>
+            </div>
+        </div>
+
+        <!-- Archivo: SpinZone.txt -->
+        <div class="window" id="window-spinzone">
+            <div class="title-bar">
+                <div class="title-bar-text" data-i18n-key="title_spinzone">SpinZone.txt - Bloc de notas</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('window-spinzone')">×</button>
+                </div>
+            </div>
+            <div class="window-body notepad-body">
+                <p><strong>SpinZone</strong></p>
+                <p data-i18n-key="spinzone_desc">Sitio E-Commerce completo especializado en la venta de productos de tenis de mesa.</p>
+            </div>
+        </div>
+
+        <!-- Archivo: AsistenciApp.txt -->
+        <div class="window" id="window-asistenciapp">
+            <div class="title-bar">
+                <div class="title-bar-text" data-i18n-key="title_asistenciapp">AsistenciApp.txt - Bloc de notas</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('window-asistenciapp')">×</button>
+                </div>
+            </div>
+            <div class="window-body notepad-body">
+                <p><strong>AsistenciApp</strong></p>
+                <p data-i18n-key="asistenciapp_desc">Aplicación centrada en el manejo de asistencia para las empresas, con funcionalidades de ingreso y salida a través de QR.</p>
             </div>
         </div>
 
         <!-- Window: Contacto -->
         <div class="window" id="window-contacto" style="top: auto; bottom: 20px; right: 20px; left: auto; transform: none;">
             <div class="title-bar">
-                <div class="title-bar-text">Contacto</div>
+                <div class="title-bar-text" data-i18n-key="title_contact">Contacto</div>
                 <div class="title-bar-controls">
                     <button aria-label="Close" onclick="closeWindow('window-contacto')">×</button>
                 </div>
             </div>
             <div class="window-body">
-                <p>¿Interesado en trabajar conmigo?</p>
+                <p data-i18n-key="contact_desc">¿Interesado en trabajar conmigo?</p>
                 <div style="display: flex; gap: 10px;">
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=justinseron138@gmail.com" target="_blank" class="button">✉ Email (Gmail)</a>
                     <a href="https://wa.me/+56953383160" target="_blank" class="button">💬 WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dialog: Translate Setup -->
+        <div class="window dialog-box" id="window-translate" style="width: 350px;">
+            <div class="title-bar">
+                <div class="title-bar-text">Language_Setup.exe</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('window-translate')">×</button>
+                </div>
+            </div>
+            <div class="window-body dialog-body">
+                <div class="dialog-content">
+                    <div class="dialog-icon">
+                        <div class="question-icon">?</div>
+                    </div>
+                    <div class="dialog-text" data-i18n-key="translate_msg">
+                        ¿Deseas traducir todo el contenido de la página? / Do you wish to translate the page content?
+                    </div>
+                </div>
+                <div class="dialog-buttons">
+                    <button class="button" onclick="toggleLanguage(); closeWindow('window-translate')" data-i18n-key="btn_yes">Sí (Yes)</button>
+                    <button class="button" onclick="closeWindow('window-translate')" data-i18n-key="btn_no">No</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ad Pop-up: Spam de los 90s -->
+        <div class="window popup-ad" id="window-ad-popup" style="width: 320px;">
+            <div class="title-bar ad-title-bar">
+                <div class="title-bar-text blink-text" data-i18n-key="ad_title">¡FELICIDADES!</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeAdPopup()">×</button>
+                </div>
+            </div>
+            <div class="window-body ad-body">
+                <div class="ad-content">
+                    <a href="#" target="_blank" id="ad-link" class="ad-button blink-bg" data-i18n-key="ad_btn">VISUALIZAR README</a>
                 </div>
             </div>
         </div>
