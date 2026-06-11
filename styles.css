@@ -237,3 +237,63 @@ fieldset legend {
 #window-contacto {
     z-index: 100;
 }
+
+/* --------------------------------------
+   Responsivo para Teléfonos (Mobile)
+--------------------------------------- */
+@media (max-width: 768px) {
+    .desktop {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .hero-title {
+        position: relative;
+        top: 0;
+        right: 0;
+        font-size: 2.5rem;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    .icon-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .desktop-icon {
+        margin: 10px;
+    }
+
+    /* Adaptar las ventanas al ancho de la pantalla */
+    .window {
+        width: 95vw;
+        max-width: 95vw;
+        max-height: 90vh; /* Evitar que se desborde la pantalla */
+        display: none; /* Ocultas por defecto */
+    }
+
+    .window.active {
+        display: flex;
+    }
+
+    .window-body {
+        overflow-y: auto; /* Permitir scroll si el contenido es largo en mobile */
+    }
+
+    /* Forzar al "banner" de contacto a estar centrado abajo en vez de fijo a la derecha */
+    #window-contacto {
+        top: auto !important;
+        left: 50% !important;
+        right: auto !important;
+        bottom: 10px !important;
+        transform: translateX(-50%) !important;
+    }
+}
