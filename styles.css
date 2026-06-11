@@ -9,6 +9,7 @@ body, html {
     padding: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh; /* Para adaptar bien en dispositivos móviles */
     overflow: hidden;
     font-family: 'MS Sans Serif', Tahoma, sans-serif;
     background-color: #598888; 
@@ -273,7 +274,8 @@ fieldset legend {
     .window {
         width: 95vw;
         max-width: 95vw;
-        max-height: 90vh; /* Evitar que se desborde la pantalla */
+        max-height: 90vh;
+        max-height: 90dvh; /* Evitar que se desborde la pantalla con android bar */
         display: none; /* Ocultas por defecto */
     }
 
@@ -290,7 +292,7 @@ fieldset legend {
         top: auto !important;
         left: 50% !important;
         right: auto !important;
-        bottom: 10px !important;
+        bottom: max(50px, env(safe-area-inset-bottom)) !important;
         transform: translateX(-50%) !important;
     }
 }

@@ -28,54 +28,75 @@ document.addEventListener('DOMContentLoaded', () => {
     windows.forEach(win => {
         const titleBar = win.querySelector('.title-bar');
         
-        // Enfocar ventana al hacer clic
-        win.addEventListener('mousedown', () => {
+        // Enfocar ventana al hacer clic o tocar
+        const bringToFront = () => {
             highestZIndex++;
             win.style.zIndex = highestZIndex;
-        });
+        };
+        win.addEventListener('mousedown', bringToFront);
+        win.addEventListener('touchstart', bringToFront, { passive: true });
 
         if (titleBar) {
             let isDragging = false;
             let startX, startY, initialLeft, initialTop;
 
-            titleBar.addEventListener('mousedown', (e) => {
+            const startDrag = (e) => {
                 // No arrastrar si se hizo clic en los controles (la 'X')
                 if (e.target.closest('.title-bar-controls')) return;
 
                 isDragging = true;
-                startX = e.clientX;
-                startY = e.clientY;
+                const touch = e.type.includes('touch') ? e.touches[0] : e;
+                startX = touch.clientX;
+                startY = touch.clientY;
                 
-                // Obtener posiciones iniciales (transformar los que tienen translate a px absolutos)
+                // Obtener posiciones iniciales
                 const rect = win.getBoundingClientRect();
                 
-                // Si la ventana está centrada con transform
-                if (win.style.transform !== 'none' && win.style.transform !== '') {
-                    win.style.transform = 'none';
-                    win.style.left = rect.left + 'px';
-                    win.style.top = rect.top + 'px';
-                }
+                // Limpiar reglas que bloquean el movimiento (ej. la de contacto)
+                win.style.setProperty('bottom', 'auto', 'important');
+                win.style.setProperty('right', 'auto', 'important');
+                win.style.setProperty('transform', 'none', 'important');
                 
-                initialLeft = win.offsetLeft;
-                initialTop = win.offsetTop;
-            });
+                win.style.left = rect.left + 'px';
+                win.style.top = rect.top + 'px';
+                
+                initialLeft = rect.left;
+                initialTop = rect.top;
+            };
 
-            document.addEventListener('mousemove', (e) => {
+            const doDrag = (e) => {
                 if (!isDragging) return;
                 
-                const dx = e.clientX - startX;
-                const dy = e.clientY - startY;
+                const touch = e.type.includes('touch') ? e.touches[0] : e;
+                const dx = touch.clientX - startX;
+                const dy = touch.clientY - startY;
                 
-                win.style.left = `${initialLeft + dx}px`;
-                win.style.top = `${initialTop + dy}px`;
+                // Si es un dispositivo móvil, bloquear el movimiento en X
+                if (window.innerWidth <= 768) {
+                    win.style.setProperty('left', '50%', 'important');
+                    win.style.setProperty('transform', 'translateX(-50%)', 'important');
+                    win.style.setProperty('top', `${initialTop + dy}px`, 'important');
+                } else {
+                    win.style.left = `${initialLeft + dx}px`;
+                    win.style.top = `${initialTop + dy}px`;
+                }
                 
-                // Prevenir seleccionar texto mientras se arrastra
-                e.preventDefault();
-            });
+                // Prevenir seleccionar texto o hacer scroll nativo por accidente
+                if (e.cancelable) e.preventDefault();
+            };
 
-            document.addEventListener('mouseup', () => {
+            const endDrag = () => {
                 isDragging = false;
-            });
+            };
+
+            titleBar.addEventListener('mousedown', startDrag);
+            titleBar.addEventListener('touchstart', startDrag, { passive: false });
+
+            document.addEventListener('mousemove', doDrag);
+            document.addEventListener('touchmove', doDrag, { passive: false });
+
+            document.addEventListener('mouseup', endDrag);
+            document.addEventListener('touchend', endDrag);
         }
     });
 
