@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justin Serón - Portafolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="desktop" id="desktop">
+        <!-- Main Hero Title -->
+        <div class="hero-title">Justin Serón</div>
+
+        <!-- Desktop Icons -->
+        <div class="icon-container">
+            <div class="desktop-icon" onclick="openWindow('window-sobre-mi')">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%23FFDB58' d='M2 6h10l4 4h14v16HT2z'/></svg>" alt="Carpeta">
+                <span>Sobre mí</span>
+            </div>
+
+            <div class="desktop-icon" onclick="openWindow('window-proyectos')">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%23FFDB58' d='M2 6h10l4 4h14v16HT2z'/><rect x='6' y='14' width='20' height='2' fill='%23000'/><rect x='6' y='18' width='16' height='2' fill='%23000'/></svg>" alt="Carpeta">
+                <span>Mis Proyectos</span>
+            </div>
+
+            <div class="desktop-icon" onclick="openWindow('window-contacto')">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%23C0C0C0' d='M2 8h28v16HT2z'/><path fill='%23fff' d='M2 8l14 10L30 8'/></svg>" alt="Correo">
+                <span>Contacto</span>
+            </div>
+        </div>
+
+        <!-- Window: Sobre mí -->
+        <div class="window" id="window-sobre-mi">
+            <div class="title-bar">
+                <div class="title-bar-text">Sobre mí</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('window-sobre-mi')">×</button>
+                </div>
+            </div>
+            <div class="window-body">
+                <p><strong>Justin Serón</strong></p>
+                <p>Soy estudiante de Ingeniería en Informática de séptimo semestre. Me destaco como desarrollador de software con interés 
+                particular en la ciberseguridad, cuento con certificaciones tales como Cybersecurity Awareness Professional Certification (CAPC),
+                también me destaco en el desarrollo de aplicaciones y sitios web.</p>
+                <fieldset>
+                    <legend>Stack Tecnológico</legend>
+                    <p>Angular, Ionic, Next.js, React, Flutter, Firebase, Supabase y demás.</p>
+                </fieldset>
+            </div>
+        </div>
+
+        <!-- Window: Mis Proyectos -->
+        <div class="window" id="window-proyectos">
+            <div class="title-bar">
+                <div class="title-bar-text">Mis Proyectos</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('window-proyectos')">×</button>
+                </div>
+            </div>
+            <div class="window-body">
+                <ul>
+                    <li>
+                        <strong>MoveGo</strong><br>
+                        Sistema de movilización y gestión de rutas enfocada en los estudiantes de DuocUC.
+                    </li>
+                    <li>
+                        <strong>SpinZone</strong><br>
+                        Sitio E-Commerce completo especializado en la venta de productos de tenis de mesa.
+                    </li>
+                    <li>
+                        <strong>AsistenciApp</strong><br>
+                        Aplicación centrada en el manejo de asistencia para las empresas, con funcionalidades de ingreso y salida a través de QR.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Window: Contacto -->
+        <div class="window" id="window-contacto" style="top: auto; bottom: 20px; right: 20px; left: auto; transform: none;">
+            <div class="title-bar">
+                <div class="title-bar-text">Contacto</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('window-contacto')">×</button>
+                </div>
+            </div>
+            <div class="window-body">
+                <p>¿Interesado en trabajar conmigo?</p>
+                <div style="display: flex; gap: 10px;">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=justinseron138@gmail.com" target="_blank" class="button">✉ Email (Gmail)</a>
+                    <a href="https://wa.me/+56953383160" target="_blank" class="button">💬 WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
