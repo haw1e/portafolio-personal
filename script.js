@@ -2,7 +2,7 @@
 let highestZIndex = 10;
 
 // Variables para el pop-up retro
-let adPopupShown = { 'window-movego': false, 'window-spinzone': false };
+let adPopupShown = { 'window-movego': false, 'window-spinzone': false, 'window-itsadate': false };
 let adPopupTimer = null;
 
 function openWindow(id) {
@@ -17,7 +17,7 @@ function openWindow(id) {
         document.querySelectorAll('.desktop-icon, .folder-icon').forEach(icon => icon.classList.remove('selected'));
 
         // Lógica del Pop-up publicitario
-        if ((id === 'window-movego' || id === 'window-spinzone') && !adPopupShown[id]) {
+        if ((id === 'window-movego' || id === 'window-spinzone' || id === 'window-itsadate') && !adPopupShown[id]) {
             clearTimeout(adPopupTimer);
             adPopupTimer = setTimeout(() => {
                 showAdPopup(id);
@@ -35,6 +35,8 @@ function showAdPopup(sourceId) {
             adLink.href = 'https://github.com/lucassmelendez/SZFrontend';
         } else if (sourceId === 'window-movego') {
             adLink.href = 'https://github.com/justinseron/MoveGo';
+        } else if (sourceId === 'window-itsadate') {
+            adLink.href = 'https://github.com/haw1e/itsadate';
         }
         
         adPopupShown[sourceId] = true;
@@ -57,7 +59,7 @@ function closeWindow(id) {
         win.classList.remove('active');
         
         // Resetear el estado del popup si se cierra el archivo de texto
-        if (id === 'window-movego' || id === 'window-spinzone') {
+        if (id === 'window-movego' || id === 'window-spinzone' || id === 'window-itsadate') {
             adPopupShown[id] = false;
             clearTimeout(adPopupTimer); // Evitar que aparezca si se cierra antes de los 2.5s
         }
@@ -184,7 +186,7 @@ const translations = {
         tree_desktop: "Escritorio",
         tree_mypc: "Mi PC",
         tree_projects: "Mis Proyectos",
-        status_objs: "3 objeto(s)",
+        status_objs: "4 objeto(s)",
         status_space: "969KB (Espacio libre en disco: 40.8MB)",
         title_movego: "MoveGo.txt - Bloc de notas",
         movego_desc: "Sistema de movilización y gestión de rutas enfocada en los estudiantes de DuocUC.",
@@ -192,6 +194,8 @@ const translations = {
         spinzone_desc: "Sitio E-Commerce completo especializado en la venta de productos de tenis de mesa.",
         title_asistenciapp: "AsistenciApp.txt - Bloc de notas",
         asistenciapp_desc: "Aplicación centrada en el manejo de asistencia para las empresas, con funcionalidades de ingreso y salida a través de QR.",
+        title_itsadate: "ItsADate.txt - Bloc de notas",
+        itsadate_desc: "Aplicación centrada en administración y planificación de citas.",
         title_contact: "Contacto",
         contact_desc: "¿Interesado en trabajar conmigo?",
         dialog_title: "Language_Setup.exe",
@@ -220,7 +224,7 @@ const translations = {
         tree_desktop: "Desktop",
         tree_mypc: "My PC",
         tree_projects: "My Projects",
-        status_objs: "3 object(s)",
+        status_objs: "4 object(s)",
         status_space: "969KB (Disk free space: 40.8MB)",
         title_movego: "MoveGo.txt - Notepad",
         movego_desc: "Routing and mobilization system focused on DuocUC students.",
@@ -228,6 +232,8 @@ const translations = {
         spinzone_desc: "Complete E-Commerce site specialized in the sale of table tennis products.",
         title_asistenciapp: "AsistenciApp.txt - Notepad",
         asistenciapp_desc: "Application focused on attendance management for companies, with QR code entry and exit functionalities.",
+        title_itsadate: "ItsADate.txt - Notepad",
+        itsadate_desc: "Application focused on appointment administration and scheduling.",
         title_contact: "Contact",
         contact_desc: "Interested in working with me?",
         dialog_title: "Language_Setup.exe",

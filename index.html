@@ -121,11 +121,15 @@
                             <img src="images/notepad.svg" alt="AsistenciApp.txt">
                             <span>AsistenciApp.txt</span>
                         </div>
+                        <div class="folder-icon" onclick="openWindow('window-itsadate')">
+                            <img src="images/notepad.svg" alt="ItsADate.txt">
+                            <span>ItsADate.txt</span>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="status-bar">
-                <div class="status-left" data-i18n-key="status_objs">3 object(s)</div>
+                <div class="status-left" data-i18n-key="status_objs">4 object(s)</div>
                 <div class="status-right" data-i18n-key="status_space">969KB (Disk free space: 40.8MB)</div>
             </div>
         </div>
@@ -169,6 +173,20 @@
             <div class="window-body notepad-body">
                 <p><strong>AsistenciApp</strong></p>
                 <p data-i18n-key="asistenciapp_desc">Aplicación centrada en el manejo de asistencia para las empresas, con funcionalidades de ingreso y salida a través de QR.</p>
+            </div>
+        </div>
+
+        <!-- Archivo: ItsADate.txt -->
+        <div class="window" id="window-itsadate">
+            <div class="title-bar">
+                <div class="title-bar-text" data-i18n-key="title_itsadate">ItsADate.txt - Bloc de notas</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('window-itsadate')">×</button>
+                </div>
+            </div>
+            <div class="window-body notepad-body">
+                <p><strong>ItsADate!</strong></p>
+                <p data-i18n-key="itsadate_desc">Aplicación centrada en administración y planificación de citas.</p>
             </div>
         </div>
 
